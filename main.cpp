@@ -892,3 +892,66 @@
 //ps>tar j--
 //ps<tar i++
 //ps=tar ans (i,j)
+
+
+
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+
+// int main() {
+//     int n = 5;
+//     int arr[5] = {2, 3, 4, 5, 6};   
+//     int i = 0;
+//     int j = n - 1;    
+//     int tar = 9;     
+//     int pairsum;    
+
+//     while (i < j) { // i should not cross j or be at the same place
+//         pairsum = arr[i] + arr[j];
+
+//         if (pairsum > tar) {
+//             j--;
+//         }      
+//         else if (pairsum < tar) {
+//             i++;
+//         }
+//         else {
+//             cout << "Pair found at indices: " << i << ", " << j << endl;
+//             return 0; // Exit the program after finding a pair
+//         }
+//     }
+
+//     cout << "No pair found" << endl;
+//     return 0;
+// }
+
+//majority element
+// mj >n/2 times n is a size of an array 
+// its a brutt force approach in it 1st we check the each element are appears how many times 
+ // and then we calculate a mj >n/2 mj is a the element ocuurs a no of times 
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n = 5;
+    int arr[5] = {2, 2, 4, 4, 2};   
+    for(int i=0;i<n;i++){ // it means similar to a for ( int i = 0; i < n ; i++)// this loop is use to a travell a array 
+        int frequency=0;
+        for(int j=0;j<n;j++){// its a updated loop after for add a frequency
+            if(arr[j]==arr[i]){
+                frequency++;
+            }
+        }
+        if(frequency > n/2){
+            cout<< arr[i]<<endl;
+        }
+    }
+
+    
+    return 0;
+}
+
+
