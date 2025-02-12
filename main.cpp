@@ -785,8 +785,8 @@
 // }
 
 //there are two types of a memory static and a dynamic allocation
-//static are run is a compile time 
-//dynamic allocation is a run time
+//static are run in a compile time 
+//dynamic allocation in a run time
 //vector is a dynamic alloction its a allocate n a heap memory '
 //array is allocate in a stack
 //there are a two decalre function in a vec {vec.size and vec.capacity}
@@ -893,8 +893,6 @@
 //ps<tar i++
 //ps=tar ans (i,j)
 
-
-
 // #include <iostream>
 // #include <vector>
 // using namespace std;
@@ -931,27 +929,273 @@
 // its a brutt force approach in it 1st we check the each element are appears how many times 
  // and then we calculate a mj >n/2 mj is a the element ocuurs a no of times 
 
-#include <iostream>
-#include <vector>
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+// int main() {
+//     int n = 5;
+//     int arr[5] = {2, 2, 4, 4, 2};   
+//     for(int i=0;i<n;i++){ // it means similar to a for ( int i = 0; i < n ; i++)// this loop is use to a travell a array 
+//         int frequency=0;
+//         for(int j=0;j<n;j++){// its a updated loop after for add a frequency
+//             if(arr[j]==arr[i]){
+//                 frequency++;
+//             }
+//         }
+//         if(frequency > n/2){
+//             cout<< arr[i]<<endl;
+//         }
+//     }
+//     return 0;
+// }
+
+//compute xpower n
+//binary exponention
+// #include<iostream>
+// using namespace std;
+// int main(){
+//    long binom = 3 ;
+//     double ans =1;
+//     int x;
+//     while(binom>0){
+//         if(binom%2==1){
+//             ans*=x;
+
+//         }
+//         x*=x;//x sqr
+//         cout<<ans<<endl;
+//     }
+//     return 0;
+
+// }
+// pow (x,n)
+
+// //class Solution {
+// public:
+//     double myPow(double x, int n){
+//         if(n ==0) return 1.0;
+//         if(x==0) return 0.0; 
+//         if(x==1) return 1.0;
+//         if (x ==-1 && n%2 ==0)return 1.0;
+//         if (x == -1 && n%2 !=0) return -1.0;
+
+//         long binom = n ;
+//         if(n<0){
+//             x=1/x;
+//             binom =-binom;
+//         }
+//     double ans =1;
+//     while(binom>0){ // in there are we use a binary form number 
+//         if(binom%2==1){// we find a binary form we want a binary form number last digit is equal to 1
+//             ans*=x;
+//         }
+//         x*=x;//x sqr
+//         binom/=2;
+//     }
+//         return ans;
+//     }
+// };
+
+// #include<iostream>
+// using namespace std;
+// int main(){
+//     int maxprofit = 0;//[7,5,8,4,1,2]
+//    int  bestbuy = price[0];
+//     for(int i =1; i<5;i++){
+//         if(price[i]>bestbuy){
+//             maxprofit = max(maxprofit,price[i]-bestbuy);
+
+//         }
+//         bestbuy= min(bestbuy,price[i]);
+//
+// }
+//     return maxprofit;
+// }
+
+//container with most water using brutt force approach
+
+// #include <iostream>
+// using namespace std;
+// int main(){
+//     int maxwater =0;
+//     for(int i = 0; i<n; i++){//it s a for a left bar side
+//         for(int j = i+1; j<n; j++){//its a right bar side
+    
+//             int width = j-i;
+//           int height= min(height[i],height[j]);
+//             int area = width*height;
+//             maxwater= max(maxwater,area);
+//         }
+//         cout<<maxwater<<endl;
+
+
+//     }
+//     return 0;
+
+// }
+// // cointainr with most  water using a two pointer approach its a optimal solution
+
+// #include<iostream>
+// using namespace std;
+// int main(){
+//     int leftptr = 0;
+//     int rightptr = n-1;
+//     int maxwater =0;
+//     while(leftptr<rightptr){
+//         int width = leftptr-rightptr;
+//         int height = min(height[leftptr],height[rightptr]);
+//         int area = width * height;
+//         maxwater = max(maxwater,area);
+//         height[leftptr]<height[rightptr]?leftptr++:rightptr--;
+//     }
+//     cout<<maxwater<<endl;
+//     return 0;
+// }
+
+//product of array except self  using a bruut force approach
+// #include<iostream>
+// using namespace std;
+// int main (){
+//     vector<int>ans;
+//      for(int i = 0; i<n;i++){
+//         int product = 1;
+//         for( int j =0; j<n;j++){// this loop is used when i holding any index number than j comes and  travel a whole vector again and product of a vector number accept i is not equal to j mean the holding number of i and j is  same
+//             if(i!==j){
+//                 product*=num[j];
+//             }
+//         }
+//      }
+//      ans[i]=product;
+// }
+//product of an array except  self
+ // ex 
+// nums = [1,2,3,4] ans [24 ,12,8,6]
+// means when you drop i =0 and multiply a remainig number in nums then the ans is 24 of j=0 of ans array
+// // product of self array using a optimal approach
+// #include<iostream>
+// using namespace std;
+// int main(){
+// vector<int>ans(n,1);
+// vector<int>prefix(n,1);
+// vector<int>suffix(n,1);
+// int nums,n;
+// for(int i = 1 ; i<n ; i++){
+//     prefix[i]=prefix[i-1]*nums[i-1];
+
+// }
+// for(int i= n-2;i>=0;i--){//there are i value is a i = n-2 because are a first suffix and prefix value is initialize =1 thats why we n-2;
+//     suffix[i]=suffix[i+1]*nums[i+1];
+// }
+// for(int i = n; i<n;i++){
+//     ans[i]=prefix[i]*suffix[i];
+// }
+// return 0;
+// }
+
+//pointers
+// #include<iostream>
+// using namespace std;
+// int main(){
+//     int a = 5;
+//     cout<<&a<<endl;
+//     return 0;
+// }
+//pointer to pointer 
+// #include<iostream>
+// using namespace std;
+// int main(){
+//     int a = 5;
+//     int* ptr = &a;
+//     int**  parptr = &ptr;
+
+//     cout<<&ptr<<endl;
+//     cout<<parptr<<endl;
+
+//     return 0;
+// }
+//in pointer use a * as a derefrence it means refrence means add and derefrence means a value store on a add
+// #include<iostream>
+// using namespace std;
+// int main(){
+//     int a = 5;
+//     int* ptr = &a;
+//     cout<<(*&a)<<endl;
+
+//     cout<<*ptr<<endl;
+   
+
+//     return 0;
+// }
+//null pointer 
+//A null pointer that doesn't point to any location
+//pass by refrence in it we changes a pass by value to a pass by refrence
+// #include<iostream>
+// using namespace std;
+// void change(int* ptr ){
+//     *ptr= 3;
+// }
+// int main(){
+//     int a = 5;
+//     change(&a);
+//     cout<<"inside a main function"<<a<<endl;
+ 
+//     return 0;
+// }
+
+// #include<iostream>
+// using namespace std;
+// void change(int &b ){//pass by refrence using a alias in it there are a alias means a we can call a same variable with a diffrent name
+//     b= 3;
+// }
+// int main(){
+//     int a = 5;
+//     change(a);
+//     cout<<"inside a main function:"<<a<<endl;
+ 
+//     return 0;
+// }
+//array ptr
+//binary search algo
+// binary search are always apply a sorted order
+//algo of binary search
+// 1]find a mid value with the help of start and mid val
+// perform a mid operation (st+end)/2;
+// 2)compare a mid value to your target value is big or small 
+// 3)if its small then move a lhs side 
+// else move rhs side
+
+#include<iostream>
+#include<vector>
 using namespace std;
 
-int main() {
-    int n = 5;
-    int arr[5] = {2, 2, 4, 4, 2};   
-    for(int i=0;i<n;i++){ // it means similar to a for ( int i = 0; i < n ; i++)// this loop is use to a travell a array 
-        int frequency=0;
-        for(int j=0;j<n;j++){// its a updated loop after for add a frequency
-            if(arr[j]==arr[i]){
-                frequency++;
-            }
-        }
-        if(frequency > n/2){
-            cout<< arr[i]<<endl;
-        }
-    }
+int binarysearch(vector<int> arr,int tar){
 
-    
-    return 0;
+int start=0 ,end = arr.size()-1;
+
+while(start<=end){
+    int mid =(start+end)/2;
+    if(tar<arr[mid]){
+        end=mid-1;
+    }
+    else if(tar>arr[mid]){
+        start=mid+1;
+    }
+    else{
+        return mid;
+    }
 }
 
+}
 
+int main() {
+    vector<int> arr1={1,2,3,4,5,6,7};//odd 
+
+     int tar1= 6;
+     cout<<binarysearch(arr1, tar1)<<endl;
+     vector<int> arr2={-1,0,2,4,5,6};//even
+     int tar2 = 4;
+     cout<<binarysearch(arr2, tar2)<<endl;
+
+     int start,end;
+return 0;
+}
