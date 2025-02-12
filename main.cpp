@@ -1200,4 +1200,3 @@ int main() {
 return 0;
 }
 
-cout<<github checking;
