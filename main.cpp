@@ -1276,3 +1276,249 @@ class Solution {
     
         }
     };
+
+
+    //3 sum approach using a brutt froce apprach trip means triplet
+    class Solution {
+        public:
+            vector<vector<int>> threeSum(vector<int>& nums) {
+                int n = nums.size();
+                int i,j,k;
+                vector<vector<int>> ans;
+                set<vector<int>> s;
+                for(i = 0; i<n;i++){
+                    for( j = i+1; j<n;j++){
+                        for(k=j+1;k<n;k++){
+                            if ( nums[i]+nums[j]+nums[k]==0){
+        
+                              vector<int> trip= { nums[i]+nums[j]+nums[k]};
+                              sort(trip.begin(),trip.end());
+                                if(s.find(trip)==s.end()){
+                                    s.insert(trip);
+                                    ans.push_back(trip);
+                                }
+                              
+                            
+                            }
+        
+                        }
+        
+        
+                    }
+                }
+              return ans;
+            }
+        };
+    // 3 sum better appraoch not a optimal
+    class Solution {
+        public:
+            vector<vector<int>> threeSum(vector<int>& nums) {
+                int n = nums.size();
+                int i,j;
+                
+                set<vector<int>> uniqueset;
+                for(i = 0; i<n;i++){
+                    int tar = -nums[i];
+                    set<int> s;
+                    for( j = i+1; j<n;j++){
+                        int third = tar -nums[j];
+                        if(s.find(third) !=s.end()){
+                            vector<int > trip = {nums[i],nums[j],third};
+                            sort(trip.begin (),trip.end());
+                            uniqueset.insert(trip);
+                        }
+                        s.insert(nums[j]);
+                    }
+                            
+                }
+                vector<vector<int>> ans(uniqueset.begin(),uniqueset.end());
+              return ans;
+            }
+        };
+
+        // 3 sum approach a optimal solution 
+        class Solution {
+            public:
+                vector<vector<int>> threeSum(vector<int>& nums) {
+                    int n = nums.size();
+                    vector<vector<int>> ans;
+                    sort(nums.begin(), nums.end());
+            
+                    for (int i = 0; i < n; i++) {
+                        // Skip duplicate numbers
+                        if (i > 0 && nums[i] == nums[i - 1]) continue;
+            
+                        int j = i + 1, k = n - 1;
+                        while (j < k) {
+                            int sum = nums[i] + nums[j] + nums[k];
+                            if (sum < 0) {
+                                j++;
+                            } else if (sum > 0) {
+                                k--;
+                            } else {
+                                ans.push_back({nums[i], nums[j], nums[k]});
+                                j++, k--;
+            
+                                // Skip duplicate numbers for j
+                                while (j < k && nums[j] == nums[j - 1]) j++;
+            
+                                // Skip duplicate numbers for k
+                                while (j < k && nums[k] == nums[k + 1]) k--;
+                            }
+                        }
+                    }
+            
+                    return ans;
+                }
+            };
+            
+// 4 sum approach 
+class Solution {
+public:
+    vector<vector<int>> fourSum(vector<int>& nums, int tar) {
+        int n = nums.size();
+        int i ;
+        int j ;
+        int k ;
+        int l ;
+        vector<vector<int >> ans;
+        sort(nums.begin(),nums.end());
+        for(i=0;i<n;i++)
+        {
+          if (i > 0 && nums[i] == nums[i - 1]) continue;
+
+            for(j=i+1;j<n;){
+                
+                int k= j+1;
+                int l = n-1;
+                {
+                    while(k<l){
+                        long long sum = (long long)nums[i]+(long long)nums[j]  +(long long)nums[k]+(long long) nums[l];
+                        if(sum<tar){
+                          k++;
+                        }
+                        else if(sum>tar){
+                            l--;
+                        }
+                        else {
+                            ans.push_back({nums[i],nums[j],nums[k],nums[l]});
+
+                            k++,l--;
+                             // Skip duplicate numbers for k
+                              while (k < l && nums[k] == nums[k-1]) k--;
+                        }
+                    }
+                }
+                j++;
+                 while (j < k && nums[j] == nums[j - 1]) j++;
+            
+            }
+        }
+      return ans;
+    }
+};
+
+
+// merge intervals optimal approach
+class Solution {
+    public:
+        vector<vector<int>> merge(vector<vector<int>>& intervals) {
+            sort(intervals.begin(),intervals.end());
+            vector<vector<int>> ans;
+            int n = intervals.size();
+            for(int i = 0;i<n;i++){
+            
+                if(ans.empty()|| intervals[i][0]> ans.back()[1]){
+                   ans.push_back(intervals[i]);
+    
+                }
+              
+                    else{
+                        ans.back()[1] = max(ans.back()[1],intervals[i][1]);
+                    }
+    
+                
+            }
+            return ans;
+        } 
+    };
+ // merge sort using a constant space a optimal approach 
+ class Solution {
+    public:
+        void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+            int idx = m+n-1;
+            int i = m-1;
+            int j = n-1;
+            while(i>=0&&j>=0){
+                if(nums1[i]>=nums2[j]){
+                    nums1[idx--]=nums1[i--];
+                    
+                }
+                else{
+                    nums1[idx--]=nums2[j--];
+                }
+            } // this loop use when we pass a conditon  of i<=0; at that time we replace remaining of element of set into j 
+                while(j>=0){
+                    nums1[idx--]= nums2[j--];
+                }
+             
+        }
+    };
+
+    //rotated search in a sorted array 
+    class Solution {
+        public:
+            int search(vector<int>& nums, int target) {
+                int low = 0;
+                int n = nums.size();
+                int high = n-1;
+                
+                while(low<=high){
+                   int mid = low+(high- low)/2;
+                     if(nums[mid]==target){
+                        return mid;
+                     }
+                     if(nums[low]<=nums[mid]){//search in a left because if this condition is true then search in a left part
+                        if(nums[low]<=target&& target<=nums[mid]){//between this range
+                            high = mid -1;
+                        }
+                        else{
+                            low = mid +1;
+                        }
+                     }
+                     else{
+                      if(nums[mid]<=target && target<=nums[high]){// search in a right between this range
+                        low = mid +1;
+                      }
+                      else{
+                        high = mid-1;
+                      }
+                      }
+                     }
+            return -1;
+            }
+        };
+
+        // search insert postion 
+        class Solution {
+            public:
+                int searchInsert(vector<int>& nums, int target) {
+                    int n = nums.size();
+                    int low =0;
+                    int high = n-1;
+                    int ans=n;
+                    while(low<=high){
+                        int mid = (low+high)/2;
+                        if(nums[mid]>=target){
+                            ans = mid;
+                            high = mid -1;
+            
+                        }
+                        else{
+                            low = mid +1;
+                        }
+                    }
+                    return ans;
+                    
+                }
+            };
