@@ -1522,3 +1522,14 @@ class Solution {
                     
                 }
             };
+
+
+            // for github push a code step 
+             //1  pull 
+            //2 status 
+            //3 add
+            //4 commit
+            //5 clear
+            //6 pull
+            //7 push
+            
