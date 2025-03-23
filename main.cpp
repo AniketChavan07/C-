@@ -1533,3 +1533,125 @@ class Solution {
             //6 pull
             //7 push
             
+            //search single element in sorted array
+            class Solution {
+                public:
+                    int singleNonDuplicate(vector<int>& nums) {
+                        int n = nums.size();
+                        int low = 0;
+                        int high = n-1;
+                        int mid;
+                        while(low<=high){
+                            mid = low+(high- low)/2;
+                            if(mid==0&&nums[0]!=nums[1]){
+                                return nums[mid];
+                
+                            }
+                            if(mid==n-1&&nums[n-1]!=nums[n-2]){
+                                return nums[mid];
+                            }
+                            if(nums[mid-1]!=nums[mid]&&nums[mid]!=nums[mid+1]){
+                                return nums[mid];
+                            }
+                            if(nums[mid]%2==0){  even array 
+                                if(nums[mid-1]==nums[mid]){ // left side
+                                high = mid-1;
+                
+                                }
+                            else{ 
+                                nums[mid+1]==nums[mid];// right side
+                                low = mid+1;
+                            }
+                
+                            }
+                            else{ odd array
+                            
+                              if(nums[mid+1]==nums[mid]){// left side
+                                high=mid-1;
+                            }
+                            else{
+                                nums[mid-1]==nums[mid];// right side
+                                low = mid +1;
+                            
+                            }
+                
+                        }
+                          
+                        }
+                        return -1;
+                    }
+                };
+
+                // find peak element 
+                class Solution {
+                    public:
+                        int findPeakElement(vector<int>& nums) {
+                            int n = nums.size();
+                            if (n == 1) return 0; // Only one element, it's the peak
+                    
+                            // Check if the first element is a peak
+                            if (nums[0] > nums[1]) {
+                                return 0;
+                            }
+                    
+                            // Check if the last element is a peak
+                            if (nums[n-1] > nums[n-2]) {
+                                return n-1;
+                            }
+                    
+                            int low = 1, high = n-2; // Narrow the search range to avoid boundary checks
+                            while (low <= high) {
+                                int mid = low + (high - low) / 2;
+                    
+                                // Check if mid is a peak
+                                if (nums[mid] > nums[mid-1] && nums[mid] > nums[mid+1]) {
+                                    return mid;
+                                }
+                    
+                                // If mid is not a peak, move towards the higher neighbor
+                                if (nums[mid] < nums[mid+1]) {
+                                    low = mid + 1;
+                                } else {
+                                    high = mid - 1;
+                                }
+                            }
+                    
+                            return -1; // No peak found (should not happen for valid inputs)
+                        }
+                    };
+                    //kokos eating bannans
+                    #include <vector>
+#include <algorithm>
+
+using namespace std;
+
+class Solution {
+public:
+    int minEatingSpeed(vector<int>& piles, int h) {
+        int n = piles.size();
+        int low = 1; // Minimum eating speed
+        int high = *max_element(piles.begin(), piles.end()); // Maximum eating speed
+        int mid;
+        int totalhrs;
+
+        while (low <= high) {
+            mid = low + (high - low) / 2; // Correct midpoint calculation
+            totalhrs = 0; // Initialize totalhrs for each candidate k
+
+            // Calculate total hours required to eat all piles at speed mid
+            for (int i = 0; i < n; i++) {
+                // Avoid overflow by rewriting (piles[i] + mid - 1) / mid
+                totalhrs += (piles[i] - 1) / mid + 1;
+            }
+
+            // Adjust search range based on totalhrs
+            if (totalhrs <= h) {
+                high = mid - 1; // Try a smaller eating speed
+            } else {
+                low = mid + 1; // Try a larger eating speed
+            }
+        }
+
+        return low; // Minimum eating speed
+    }
+};
