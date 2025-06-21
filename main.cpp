@@ -1655,3 +1655,53 @@ public:
         return low; // Minimum eating speed
     }
 };
+//book allocation problem
+// mid = max allowed pages
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+bool isValid(vector<int>& arr, int n, int m, int maxallowedpages) {
+    int student = 1;
+    int pages = 0;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > maxallowedpages) {
+            return false;  // A single book has more pages than the max allowed
+        }
+        if (pages + arr[i] <= maxallowedpages) {
+            pages += arr[i];  // Allocate the book to the current student
+        } else {
+            student++;        // Allocate the book to a new student
+            pages = arr[i];
+        }
+    }
+    return student <= m;  // If students are more than allowed, return false
+}
+
+int findPages(vector<int>& arr, int n, int m) {
+    if (m > n) {
+        return -1;  // More students than books, not possible
+    }
+    
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += arr[i];  // Total number of pages
+    }
+    
+    int low = *max_element(arr.begin(), arr.end());  // Minimum possible max pages is the largest book
+    int high = sum;  // Maximum possible max pages is the total number of pages
+    int ans = -1;
+    
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        
+        if (isValid(arr, n, m, mid)) {
+            ans = mid;
+            high = mid - 1;  // Try to minimize the max allowed pages
+        } else {
+            low = mid + 1;  // Increase the number of pages per student
+        }
+    }
+    
+    return ans;  // Return the minimized max number of pages
+}
