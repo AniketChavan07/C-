@@ -373,3 +373,89 @@ class Solution {
           
       }
   };
+// check if a linked list is a palindrome or not
+  /**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+  public:
+      // Function to reverse a linked list
+      ListNode* reverseListNode(ListNode* head) {
+          ListNode* prev = nullptr;
+          ListNode* curr = head;
+          while (curr != nullptr) {
+              ListNode* nextTemp = curr->next;
+              curr->next = prev;
+              prev = curr;
+              curr = nextTemp;
+          }
+          return prev;
+      }
+  
+      bool isPalindrome(ListNode* head) {
+          if (!head || !head->next) return true;
+  
+          // Find middle of the list
+          ListNode* slow = head;
+          ListNode* fast = head;
+          while (fast->next != nullptr && fast->next->next != nullptr) {
+              slow = slow->next;
+              fast = fast->next->next;
+          }
+  
+          // Reverse the second half
+          ListNode* secondHalfStart = reverseListNode(slow->next);
+  
+          // Compare the two halves
+          ListNode* first = head;
+          ListNode* second = secondHalfStart;
+          bool isPalin = true;
+          while (second != nullptr) {
+              if (first->val != second->val) {
+                  isPalin = false;
+                  break;
+              }
+              first = first->next;
+              second = second->next;
+          }
+  
+          // Restore the second half
+          slow->next = reverseListNode(secondHalfStart);
+  
+          return isPalin;
+      }
+  };
+
+  // delete a middle node in a linked list
+  class Solution {
+    public:
+        ListNode* deleteMiddle(ListNode* head) {
+            if (head == nullptr || head->next == nullptr)
+                return nullptr; // If there's only one node, deleting it means list becomes empty
+    
+            ListNode* slow = head;
+            ListNode* fast = head;
+            ListNode* prev = nullptr; // To track the node before `slow`
+    
+            // Find middle node
+            while (fast != nullptr && fast->next != nullptr) {
+                fast = fast->next->next;
+                prev = slow;
+                slow = slow->next;
+            }
+    
+            // Delete middle node
+            prev->next = slow->next;
+            delete slow;
+    
+            return head;
+        }
+    };
+    
