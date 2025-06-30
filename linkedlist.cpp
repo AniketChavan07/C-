@@ -496,3 +496,47 @@ public:
     return prevnode;
     } 
 };
+// Definition for a Node. flattent problem
+class Solution {
+public:
+    Node* flatten(Node* head) {
+        if (!head) return nullptr;
+
+        Node* curr = head;
+
+        while (curr) {
+            if (curr->child) {
+                // Save the next node after current
+                Node* nextNode = curr->next;
+
+                // Flatten the child list
+                Node* childHead = flatten(curr->child);
+
+                // Connect current to child
+                curr->next = childHead;
+                childHead->prev = curr;
+                curr->child = nullptr;
+
+                // Move to the end of the flattened child list
+                Node* temp = childHead;
+                while (temp->next) {
+                    temp = temp->next;
+                }
+
+                // Connect the end of child list to saved nextNode
+                if (nextNode) {
+                    temp->next = nextNode;
+                    nextNode->prev = temp;
+                }
+
+                // Move curr to the next node (which is the child head now)
+                curr = nextNode;
+            } else {
+                // Move to the next node normally
+                curr = curr->next;
+            }
+        }
+
+        return head;
+    }
+};
