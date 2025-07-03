@@ -787,7 +787,7 @@ int main(){
 there are two types of a memory static and a dynamic allocation
 static are run in a compile time 
 dynamic allocation in a run time
-vector is a dynamic alloction its a allocate n a heap memory '
+vector is a dynamic alloction its a allocate n a heap memory 
 array is allocate in a stack
 there are a two decalre function in a vec {vec.size and vec.capacity}
 
@@ -1127,7 +1127,7 @@ int main(){
     return 0;
 }
 null pointer 
-A null pointer that doesn't point to any location
+A null pointer that doesnt point to any location
 pass by refrence in it we changes a pass by value to a pass by refrence
 #include<iostream>
 using namespace std;
