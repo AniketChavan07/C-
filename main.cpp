@@ -882,8 +882,7 @@ int main(){
     }
         cout<<"max sum of subarray = " << maxsum << endl;
 
-      return 0;
-
+      return  0;
 }
  pair sum
 first in it there are a pair sum are in sorting condition 
