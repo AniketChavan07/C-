@@ -1,5 +1,5 @@
-// inheritance 
-// when properties & member function of base class are passed on to the derived class
+// inheritance is used for reusablity code
+// when properties & member function of base class are passed on to the derived or child class
 // Below code of inheritance is non parameterized construcion
 #include<iostream>
 #include<string>
