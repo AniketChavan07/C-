@@ -1,0 +1,78 @@
+oops in c++
+to write a code in better way in  with the help of oops 
+stl lib 
+vector 
+string 
+stack
+oops in 2 terms
+1 object are entites in the real world
+2 class is like a blueprint of these entites or group of object
+syntax of class
+class class_name{
+
+};
+
+
+
+
+// access modifiers
+
+public : data and methods accessible to everyone
+
+private : data and methods accessible inside class
+
+protected : data and methods accessible inside class and to its derived class
+
+// setter 
+
+are use to set a private values
+
+// getter 
+are use to get a private values
+
+
+// encapsulation
+encapsulation is wrapping up of data and member function in a single unit called class
+
+ there are 4 major pillars
+ 1 encapsulation
+ 2 abstraction
+ 3 inheritance
+ 4 polymorphism
+
+ 1 encapsulation
+ class = data/properties + member function  
+hide a sensitive data and information = private;
+
+
+// constructor
+special methods invoked automatically at time of object creation used for initialisation
+
+.same name as class 
+.constructor dosent have a return type
+.only called once automatically at object creation
+.memory allocation happens when constructor is called
+
+// constructor are 2 type
+1 non parametrized
+2 parametrized
+3 copy
+
+
+// constructor 
+this is a special pointer in c++ that points to the current object
+this -> prop is same as *(this).prop
+
+//copy constructor
+special constructor default used to copy properties of one object into another
+// shallow copy and deep copy
+shallow copy means copy a one object to  another object 
+issue in a shallow copy is dynamic memory allocation 
+all dynamic memory allocation are in a heap memory
+
+// deep copy
+A deep copy on the other hand not only copies the member values but also makes copies of any dynamically allocated memory that the members point to
+
+
+// destructor 
+deallocation of a memory compiler it allocates a automatically but it deallocation only a staticly allocated memory
