@@ -76,3 +76,30 @@ A deep copy on the other hand not only copies the member values but also makes c
 
 // destructor 
 deallocation of a memory compiler it allocates a automatically but it deallocation only a staticly allocated memory
+
+// three mode of inheritance
+
+base class     derived class
+              private mode       protected mode          public mode
+public         private              protected               public
+private          not inheriated     not inheriated          not inheriated
+protected         private           protected               protected
+
+
+
+
+type of inheritance
+
+single inheritance               multilevel          multiple           heirarchal inheritance     hybrid inheritance
+
+parent                              parent       parent  parent              parent
+|                                     |                 |                   /     \
+class                                parent            child               child  child
+                                      |   
+                                      class        
+
+// inheritance is used for reusablity code
+// when properties & member function of base class are passed on to the derived or child class                                               
+
+
+                                      
