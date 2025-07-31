@@ -1,3 +1,5 @@
+// instance means in oops is object
+
 oops in c++
 to write a code in better way in  with the help of oops 
 stl lib 
@@ -11,8 +13,6 @@ syntax of class
 class class_name{
 
 };
-
-
 
 
 // access modifiers
@@ -103,8 +103,21 @@ class                                parent            child               child
 
 
 // polymorphism
+// poly = many
+// morphism = forms
 polymorphism is the abilit of object to take on different forms of behave in different ways depending on the context in which they are used 
 
 
 .compile time polymorphism
 .run time polymorphism
+
+
+// abstraction
+hiding all unnecessary details and showing only the important parts
+acces modifiers are one of the way to implement a abstraction 
+
+one more way to implement a abstraction
+using abstraction classes
+.abstract classes are used to provided a base class from which other class can be derived
+.they cannot be instantiated(not to create a object) and are meant to be inheriated
+.abstract classes are typically used to define an interfece for derived class
