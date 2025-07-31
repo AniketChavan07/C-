@@ -102,4 +102,9 @@ class                                parent            child               child
 // when properties & member function of base class are passed on to the derived or child class                                               
 
 
-                                      
+// polymorphism
+polymorphism is the abilit of object to take on different forms of behave in different ways depending on the context in which they are used 
+
+
+.compile time polymorphism
+.run time polymorphism
