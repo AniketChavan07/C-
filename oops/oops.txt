@@ -121,3 +121,42 @@ using abstraction classes
 .abstract classes are used to provided a base class from which other class can be derived
 .they cannot be instantiated(not to create a object) and are meant to be inheriated
 .abstract classes are typically used to define an interfece for derived class
+
+
+🔍 GET
+Purpose: Fetch data from the server.
+
+Example: Get all books from a library.
+
+Analogy: Reading a book — you're just looking at it.
+
+📝 POST
+Purpose: Send data to the server to create something.
+
+Example: Add a new book to the library.
+
+Analogy: Donating a new book.
+
+ PUT
+Purpose: Update existing data on the server (full replacement).
+
+Example: Update the details of an existing book.
+
+Analogy: Rewriting a book and replacing it on the shelf.
+
+
+🗑️ DELETE
+Purpose: Delete data from the server.
+
+Example: Remove a book from the library.
+
+Analogy: Throwing away a book.
+
+
+| Method | Action | Usage                 |
+| ------ | ------ | --------------------- |
+| GET    | Read   | Get data              |
+| POST   | Create | Add new data          |
+| PUT    | Update | Replace existing data |
+| DELETE | Delete | Remove data           |
+
