@@ -1746,3 +1746,42 @@ public:
         return result;
     }
 };
+
+// remove a k digits problem no 402
+class Solution {
+public:
+    string removeKdigits(string num, int k) {
+        string result = "";
+        int n = num.length();
+
+        for (int i = 0; i < n; i++) {
+            // Remove digits from result if:
+            // - result is not empty
+            // - current digit is smaller than last digit in result
+            // - we still have k digits to remove
+            while (!result.empty() && result.back() > num[i] && k > 0) {
+                result.pop_back();
+                k--;
+            }
+
+            // Avoid leading zeros
+            if (!result.empty() || num[i] != '0') {
+                result.push_back(num[i]);
+            }
+        }
+
+        // If still have k digits to remove (from the end)
+        while (k > 0 && !result.empty()) {
+            result.pop_back();
+            k--;
+        }
+
+        // If result is empty, return "0"
+        if (result.empty()) {
+            return "0";
+        }
+
+        return result;
+    }
+};
+
