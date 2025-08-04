@@ -1784,4 +1784,50 @@ public:
         return result;
     }
 };
+// asteroids collision problem using stack 
+// problem no 
+class Solution {
+public:
+    vector<int> asteroidCollision(vector<int>& asteroids) {
+        stack<int> s; // Stack to store the surviving asteroids
+        int n = asteroids.size();
+
+        for (int i = 0; i < n; i++) {
+            // Process collisions only if the current asteroid is moving left and the top of stack is moving right
+            while (!s.empty() && s.top() > 0 && asteroids[i] < 0) {
+                int sum = asteroids[i] + s.top(); // Compare sizes
+
+                if (sum < 0) {
+                    // Current left-moving asteroid is larger; destroy right-moving one
+                    s.pop();
+                } else if (sum > 0) {
+                    // Right-moving asteroid is larger; destroy current one
+                    asteroids[i] = 0;
+                } else {
+                    // Equal size; both destroy each other
+                    s.pop();
+                    asteroids[i] = 0;
+                }
+            }
+
+            // If current asteroid survives, push it to the stack
+            if (asteroids[i] != 0) {
+                s.push(asteroids[i]);
+            }
+        }
+
+        // Transfer the surviving asteroids from stack to result vector (in correct order)
+        int st = s.size();
+        vector<int> result(st);
+        int i = st - 1;
+
+        while (!s.empty()) {
+            result[i] = s.top();
+            s.pop();
+            i--;
+        }
+
+        return result;
+    }
+};
 
