@@ -1831,3 +1831,26 @@ public:
     }
 };
 
+// stock span problem using stack
+// problem no 901
+class StockSpanner {
+private:
+    // Pair: <price, span>
+    stack<pair<int, int>> st;
+
+public:
+    StockSpanner() {
+        // Initialize empty stack
+    }
+    
+    int next(int price) {
+        int span = 1;
+        // Merge spans of previous prices <= current price
+        while (!st.empty() && st.top().first <= price) {
+            span += st.top().second;
+            st.pop();
+        }
+        st.push({price, span});
+        return span;
+    }
+};
