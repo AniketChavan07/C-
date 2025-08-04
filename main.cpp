@@ -1704,3 +1704,45 @@ int findPages(vector<int>& arr, int n, int m) {
     
     return ans;  // Return the minimized max number of pages
 }
+
+// sum of subarray minimum using a stack approach
+problem no 907
+class Solution {
+public:
+    int sumSubarrayMins(vector<int>& arr) {
+        int n = arr.size();
+        const int MOD = 1e9 + 7;
+
+        vector<int> prevLess(n);
+        vector<int> nextLess(n);
+
+        // Monotonic stack for Previous Less Element
+        stack<int> s1;
+        for (int i = 0; i < n; ++i) {
+            while (!s1.empty() && arr[s1.top()] > arr[i]) {
+                s1.pop();
+            }
+            prevLess[i] = s1.empty() ? -1 : s1.top();
+            s1.push(i);
+        }
+
+        // Monotonic stack for Next Less Element
+        stack<int> s2;
+        for (int i = n - 1; i >= 0; --i) {
+            while (!s2.empty() && arr[s2.top()] >= arr[i]) {
+                s2.pop();
+            }
+            nextLess[i] = s2.empty() ? n : s2.top();
+            s2.push(i);
+        }
+
+        long long result = 0;
+        for (int i = 0; i < n; ++i) {
+            long long left = i - prevLess[i];
+            long long right = nextLess[i] - i;
+            result = (result + arr[i] * left * right) % MOD;
+        }
+
+        return result;
+    }
+};
