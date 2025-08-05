@@ -1950,3 +1950,13 @@ public:
  * int param_3 = obj->peek();
  * bool param_4 = obj->empty();
  */
+
+ // 387 - first unique character in a string
+ m.find(s[i]) == m.end()
+m is an unordered_map<char, int> which tracks how many times each character has occurred.
+
+m.find(s[i]) returns an iterator to the key if found, otherwise it returns m.end() (i.e., not found).
+
+So, m.find(s[i]) == m.end() means:
+
+"Has the character s[i] never appeared before?"
