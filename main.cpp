@@ -1960,3 +1960,28 @@ m.find(s[i]) returns an iterator to the key if found, otherwise it returns m.end
 So, m.find(s[i]) == m.end() means:
 
 "Has the character s[i] never appeared before?"
+
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        unordered_map<char, int> m;  // Stores frequency of each character
+        queue<int> q;                // Stores indices of characters that might be unique
+
+        for (int i = 0; i < s.size(); i++) {
+            // If the character is seen for the first time, store its index
+            if (m.find(s[i]) == m.end()) {
+                q.push(i);
+            }
+            m[s[i]]++;  // Increment frequency of the character
+
+            // Remove characters from the front of the queue if they are no longer unique
+            while (!q.empty() && m[s[q.front()]] > 1) {
+                q.pop();
+            }
+        }
+
+        // If queue is empty, no unique character found, return -1
+        // Otherwise, return the index of the first unique character
+        return q.empty() ? -1 : q.front();
+    }
+};
